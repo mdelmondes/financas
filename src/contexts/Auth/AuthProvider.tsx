@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { AuthContext } from "./AuthContext"
 import { User } from "../../types/User"
 import { useApi } from "../../hooks/useApi"
 
 export const AuthProvider = ({children}: {children: JSX.Element} ) => {
     const [user, setUser] = useState<User | null>(null)
-    const api = useApi()
+    const {current: api} = useRef(useApi())
 
     useEffect(() => {
         const validateToken = async () => {
             const storageData = localStorage.getItem('authToken')            
-            //console.log(storageData)
+
             if(storageData){
                 try {
                     const data = await api.validateToken(storageData)

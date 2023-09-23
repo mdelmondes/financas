@@ -14,7 +14,6 @@ export const Login = () => {
     const handleLogin = async () => {
         if(email && password) {
             const isLogged = await auth.signin(email, password)
-            console.log(isLogged)
 
             if(isLogged){
                 navigate('/')

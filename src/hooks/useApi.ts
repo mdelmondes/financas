@@ -17,7 +17,6 @@ export const useApi = () => ({
 
     signin: async (email: string, password: string) => {
         const response = await api.post('/auth/login', {email, password})
-        console.log(response)
         return response.data
     },
 
