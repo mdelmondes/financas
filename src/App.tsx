@@ -5,6 +5,9 @@ import { Home } from './components/Home';
 import { Private } from './components/Private';
 import { RequireAuth } from './contexts/Auth/RequireAuth';
 import { AuthContext } from './contexts/Auth/AuthContext';
+import { Register } from './components/Register';
+import { Login } from './components/Login';
+import { Navbar } from './components/Navbar';
 
 function App() {
   const auth = useContext(AuthContext)
@@ -17,17 +20,16 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <h1>Header site</h1>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/private">Pagina privada</Link>
-          {auth.user && <a href="#" onClick={handleLogout}>Sair</a>}
-        </nav>
-      </header>
+      {auth.user && <Navbar/>}
+      {/*
       <hr/>
+     */}
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Login/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register/>} />
+        <Route path="*" element={<RequireAuth><Home/></RequireAuth>} />
+        <Route path="/home" element={<RequireAuth><Home/></RequireAuth>} />
         <Route path="/private" element={<RequireAuth><Private/></RequireAuth>} />
       </Routes>
     </div>
