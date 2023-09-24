@@ -30,7 +30,7 @@ export const AuthProvider = ({children}: {children: JSX.Element} ) => {
         const data = await api.signin(email, password)
         const token = data.token
         if (data && data.token) {
-            setUser(data)
+            setUser(data.user[0])
             setToken(token)
             return true
         }
