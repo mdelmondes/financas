@@ -18,7 +18,6 @@ export const Navbar = () => {
                 <nav>
                     <Link to="/home">Home</Link>
                     <Link to="/private">Pagina privada</Link>
-                    <Link to="/register">Sign Up</Link>
                     {auth.user && <a href="#" onClick={handleLogout}>Sair</a>}
                 </nav>
             </header>
