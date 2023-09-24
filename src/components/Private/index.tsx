@@ -5,7 +5,7 @@ export const Private = () =>  {
     const auth = useContext(AuthContext)
     return (
         <div>
-            <h2>Olá, {auth.user?.name}.</h2>
+            <h2>Olá, {auth.user?.username}.</h2>
         </div>
     )
 }

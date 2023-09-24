@@ -14,8 +14,8 @@ export const AuthProvider = ({children}: {children: JSX.Element} ) => {
             if(storageData){
                 try {
                     const data = await api.validateToken(storageData)
-                    if(data.id){
-                        setUser(data)
+                    if(data[0].email){
+                        setUser(data[0])
                     }
                 } catch (error) {
                     console.log(error)
