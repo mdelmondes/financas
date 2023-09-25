@@ -8,6 +8,8 @@ import { AuthContext } from './contexts/Auth/AuthContext';
 import { Register } from './components/Register';
 import { Login } from './components/Login';
 import { Navbar } from './components/Navbar';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const auth = useContext(AuthContext)
@@ -32,6 +34,7 @@ function App() {
         <Route path="/home" element={<RequireAuth><Home/></RequireAuth>} />
         <Route path="/private" element={<RequireAuth><Private/></RequireAuth>} />
       </Routes>
+      <ToastContainer/>
     </div>
   );
 }

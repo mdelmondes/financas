@@ -6,7 +6,7 @@ import './index.css'
 export const Login = () => {
     const auth = useContext(AuthContext)
     const navigate = useNavigate()
-
+    const [msgError, setMsgError] = useState('')
 
 
     const [email, setEmail] = useState('')
@@ -16,11 +16,14 @@ export const Login = () => {
         if(email && password) {
             const isLogged = await auth.signin(email, password)
 
-            if(isLogged){
-                navigate('/home')
-            } else {
-                alert('SENHA OU USUARIO INVALIDO')
+            if(!isLogged){
+                setMsgError('Email e/ou senha inválidos!')
+                return false
             }
+
+            navigate('/home')
+        } else {
+            setMsgError('Todos os campos precisam ser preenchidos!')
         }
     }
 
@@ -43,6 +46,9 @@ export const Login = () => {
                         <div>
                             <button type="button" className="button_enviar" onClick={handleLogin}>Logar</button>
                             <button type="button" className="button_enviar" onClick={handleRegister}>Ainda não tem conta? Crie agora</button>
+                        </div>
+                        <div>
+                            <p style={{color: 'red'}}>{msgError}</p>
                         </div>
                     </form>
                 </div>

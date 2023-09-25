@@ -23,5 +23,10 @@ export const useApi = () => ({
     signout: async () => {
        const response = await api.post('/logout')       
        return response.data
+    },
+
+    signup: async (email: string, username: string, password: string) => {
+        const response = await api.post('/auth/register', {email, username, password})
+        return response.data
     }
 })

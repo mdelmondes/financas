@@ -1,5 +1,7 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { AuthContext } from "../../contexts/Auth/AuthContext"
 import { useNavigate } from "react-router-dom"
+import { toast } from 'react-toastify';
 import './index.css'
 
 export const Register = () => {
@@ -8,12 +10,36 @@ export const Register = () => {
     const [emailConf, setEmailConf] = useState('')
     const [senha, setSenha] = useState('')
     const navigate = useNavigate()
+    const auth = useContext(AuthContext)
+    const [msgError, setMsgError] = useState('')
 
     const goToLogin = () => {       
         navigate('/login')          
     }
 
     const handleRegister = async () => {
+        if(!nome && !email && !emailConf && !senha){
+            setMsgError('Todos os campos precisam ser preenchidos!')
+            return false
+        } else {
+            if(email !== emailConf) {
+                setMsgError('Os emails precisam ser iguais!')
+                return false
+            }
+
+            const register = await auth.signup(email, nome, senha)
+            const data = JSON.parse(register) 
+            
+            if(data.statusCode === 201){
+                navigate('/login')
+                toast.success("Conta criada com sucesso!", {
+                    position: toast.POSITION.BOTTOM_LEFT
+                })
+            } else if (data.statusCode === 409) {
+                setMsgError('Email informado já está cadastrado!')
+                return false
+            }
+        }
 
     }
 
@@ -38,6 +64,9 @@ export const Register = () => {
                         <div>
                             <button type="button" className="button_enviar" onClick={handleRegister}>Registre-se</button>
                             <button type="button" className="button_enviar" onClick={goToLogin}>Já tem uma conta? Entre agora</button>
+                        </div>
+                        <div>
+                            <p style={{color: 'red'}}>{msgError}</p>
                         </div>
                     </form>
                 </div>

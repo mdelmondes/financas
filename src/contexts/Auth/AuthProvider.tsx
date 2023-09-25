@@ -48,8 +48,13 @@ export const AuthProvider = ({children}: {children: JSX.Element} ) => {
         localStorage.setItem('authToken', token)
     }
 
+    const signup = async (email: string, username: string, password: string) => {
+        const data = await api.signup(email, username, password)
+        return JSON.stringify(data)
+    }
+
     return (
-        <AuthContext.Provider value={{ user, signin, signout }}>
+        <AuthContext.Provider value={{ user, signin, signout, signup }}>
             {children}
         </AuthContext.Provider>
     )
