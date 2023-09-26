@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
-import { RequireAuth } from './../../contexts/Auth/RequireAuth';
 import { AuthContext } from './../../contexts/Auth/AuthContext';
 
 export const Navbar = () => {
@@ -17,7 +16,7 @@ export const Navbar = () => {
             <header>
                 <nav>
                     <Link to="/home">Home</Link>
-                    <Link to="/private">Pagina privada</Link>
+                    {<Link to="/category">Categoria</Link>}
                     {auth.user && <a href="#" onClick={handleLogout}>Sair</a>}
                 </nav>
             </header>

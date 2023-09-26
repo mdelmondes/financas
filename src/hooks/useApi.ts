@@ -28,5 +28,15 @@ export const useApi = () => ({
     signup: async (email: string, username: string, password: string) => {
         const response = await api.post('/auth/register', {email, username, password})
         return response.data
-    }
+    },
+
+    createCategory: async (cat_name: string, cat_status: boolean) => {
+        const response = await api.post('/categories', {cat_name, cat_status})        
+        return response.data
+    },
+
+    getCategory: async () => {
+        const response = await api.get('/categories')        
+        return response.data
+     },
 })

@@ -53,8 +53,18 @@ export const AuthProvider = ({children}: {children: JSX.Element} ) => {
         return JSON.stringify(data)
     }
 
+    const createCategory = async (cat_name: string, cat_status: boolean) => {
+        const data = await api.createCategory(cat_name, cat_status);
+        return data
+    }
+
+    const getCategory = async () => {
+        const data = await api.getCategory();
+        return data
+    }
+
     return (
-        <AuthContext.Provider value={{ user, signin, signout, signup }}>
+        <AuthContext.Provider value={{ user, signin, signout, signup, createCategory, getCategory }}>
             {children}
         </AuthContext.Provider>
     )
