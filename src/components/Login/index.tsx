@@ -44,8 +44,8 @@ export const Login = () => {
                             <input className="input_form" type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha" />
                         </div>
                         <div>
-                            <button type="button" className="button_enviar" onClick={handleLogin}>Logar</button>
-                            <button type="button" className="button_enviar" onClick={handleRegister}>Ainda não tem conta? Crie agora</button>
+                            <button type="button" className="buttons_login" onClick={handleLogin}>Logar</button>
+                            <button type="button" className="buttons_login" onClick={handleRegister}>Ainda não tem conta? Crie agora</button>
                         </div>
                         <div>
                             <p style={{color: 'red'}}>{msgError}</p>

@@ -62,8 +62,8 @@ export const Register = () => {
                             <input value={senha} onChange={e => setSenha(e.target.value)} className="input_form" type="password" placeholder="Digite sua senha" />
                         </div>
                         <div>
-                            <button type="button" className="button_enviar" onClick={handleRegister}>Registre-se</button>
-                            <button type="button" className="button_enviar" onClick={goToLogin}>Já tem uma conta? Entre agora</button>
+                            <button type="button" className="buttons_register" onClick={handleRegister}>Registre-se</button>
+                            <button type="button" className="buttons_register" onClick={goToLogin}>Já tem uma conta? Entre agora</button>
                         </div>
                         <div>
                             <p style={{color: 'red'}}>{msgError}</p>

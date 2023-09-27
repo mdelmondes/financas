@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../contexts/Auth/AuthContext"
 import './index.css'
-import { useNavigate } from "react-router-dom"
 import { toast } from 'react-toastify';
 import { ListagemCategorias } from "./Listagem";
 
@@ -10,11 +9,10 @@ export const Category = () =>  {
     const [name, setName] = useState('')
     const [status, setStatus] = useState('')
     const [data, setData] = useState<any[]>([])
-    const navigate = useNavigate()
 
     useEffect(() => {        
         getCategories()
-    }, [])
+    },)
     
     const getCategories = async () => {            
         try {
@@ -77,7 +75,7 @@ export const Category = () =>  {
                             <label className="label_form" htmlFor="false">Inativa</label>
                         </div>
                         <div>
-                            <button type="button" className="button_enviar" onClick={enviarCategoria} >Cadastrar categoria</button>
+                            <button type="button" className="buttons_category" onClick={enviarCategoria} >Cadastrar categoria</button>
                         </div>
                     </form>
                 </div>

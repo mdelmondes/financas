@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './App.css';
-import { Route, Routes, Link, useNavigate } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { Home } from './components/Home';
 import { RequireAuth } from './contexts/Auth/RequireAuth';
 import { AuthContext } from './contexts/Auth/AuthContext';
@@ -13,12 +13,6 @@ import { Category } from './components/Category';
 
 function App() {
   const auth = useContext(AuthContext)
-  const navigate = useNavigate()
-
-  const handleLogout = async () => {
-    await auth.signout()
-    navigate('/')
-  }
 
   return (
     <div className="App">

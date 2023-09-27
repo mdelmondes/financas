@@ -1,4 +1,6 @@
 .div_form_container_category {
+    margin-top: 10px;
+    margin-bottom: 10px;
     width: 100%;
     display: flex;
     gap: 10px;
@@ -14,7 +16,7 @@
     flex-direction: column;
     width: 100%;
     box-shadow: 0 1px 2px #0003;
-    max-width: 350px;
+    max-width: 420px;
     padding: 50px;
     border-radius: 10px;
     background-color: #fff;
@@ -31,7 +33,7 @@ input[type="radio"] {
     font-size: 20px;
     border: 2px solid #c3c3c3 !important;
     border-radius: 5px;
-    margin: 5px;
+    margin-top: 5px;
     display: flex;
     align-items: center;
 }
@@ -87,6 +89,20 @@ input[type="radio"]:checked + .label_form:before {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.buttons_category {
+    padding: 16px 20px;
+    margin-top: 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    background-color: #046ee5;
     color: #fff;
     font-weight: 600;
     font-size: 16px;
